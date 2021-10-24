@@ -1,1 +1,1 @@
-# cse3380_LA
+# Linear Algebra & Computer Graphics Fall 2021
