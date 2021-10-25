@@ -2,30 +2,34 @@ import numpy as np
 import sympy
 
 def getvectorX(B,xB):
- # b1,b2,b3 = B
- # xb1,xb2,xb3 = xB
- res = []
- for i in range(len(B)):
-  b = B[i]
-  xb = xB[i]
-  res.append(np.dot(b,xb))
- #get total sum
- r1,r2,r3 = 0,0,0
- for col in res:
-  for index,val in enumerate(col):
-   if index == 0:r1 +=val
-   elif index == 1:r2 +=val
-   elif index == 2:r3 +=val
- return [[r1],[r2],[r3]]
+  """
+  returns col vector determined by coordinate vector xB and basis B
+  only works on 3x3 basis and 1x3 coordinate vector
+  """
+  b1,b2,b3 = None,None,None
+  for index,b in enumerate(B):
+    #change each row vector to column vector 
+    if index == 0: b1 = np.array(b).reshape((3,1))
+    elif index == 1: b2 = np.array(b).reshape((3,1))
+    elif index == 2: b3 = np.array(b).reshape((3,1))
+  #multiply numpy.ndarray with scalar in xB
+  for index,xb in enumerate(xB):
+    if index == 0: b1 = np.multiply(b1,xb)
+    elif index == 1: b2 = np.multiply(b2,xb)
+    elif index == 2: b3 = np.multiply(b3,xb)
+  #add all vectors
+  temp =  np.add(b1,b2) #add first two vector, np.add takes 2 param
+  return np.add(temp,b3) #add third vector
+
+
+
+
+
+
 
 
 
 if __name__ == "__main__":
- B1 = np.array([[1],[-4],[3]])
- B2= np.array([[5],[2],[-2]])
- B3 = np.array([[4],[-7],[0]])
-
- xB = np.array([[3],[0],[1]])
-
- B = (B1,B2,B3)
- print(getvectorX(B,xB))
+  setB = ([0,-1,-1],[-4,0,0],[6,6,3])
+  xB = [-2,6,1]
+  print(f"Vector X determied by setB and xB is:\n{getvectorX(setB,xB)}")
