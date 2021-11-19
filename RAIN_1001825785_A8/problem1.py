@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy import sparse
+import matplotlib.pyplot as plt
 
 # Cosine similarity measures the similarity between two non-zero vectors using the
 # dot product
@@ -13,17 +14,18 @@ def _cosine_similarity(input_mat):
  return similarities
 
 
-# (b) Generate a random M ×N matrix and use it as input to your function to test
-#returns a random mxn matrix with values ranging from int 0 - 20
+# (b) Generate a random M × N matrix and use it as input to your function to test
+#returns a random M x N matrix with values ranging from int 0 - 20
 def _get_random_mxn_matrix(m,n):
  return np.random.randint(0, high=20, size=(m,n), dtype='l')
 
 # (c) Create a matplotlib plot and use the matshow function to display the scores.
-def _create_plot():
- pass
+def _create_plot(scores):
+ plt.matshow(scores)
+ plt.show()
 
 if __name__ == '__main__':
  a = _get_random_mxn_matrix(3,4) #numpy.ndarray
  print(a)
  similarities = cosine_similarity(a)
- print(similarities)
+ _create_plot(similarities)
