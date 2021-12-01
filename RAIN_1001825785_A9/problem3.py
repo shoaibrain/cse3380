@@ -20,6 +20,5 @@ def getDecom():
  print('\nQ:\n', q)
  print('\nR:\n', r)
 
-
 if __name__ == '__main__':
  getDecom()

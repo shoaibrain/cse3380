@@ -5,7 +5,6 @@ finding the least squares solution, plot the data and the solution using matplot
 """
 import numpy as np
 import matplotlib.pyplot as plt
-plt.style.use("ggplot")
 def main():
  #load data
  data  = np.loadtxt('dataset1.txt',encoding='bytes')
