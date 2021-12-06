@@ -14,7 +14,7 @@ A =
 def plot(eigenvalues,standard_basis_vector,vector_cols_A_1,vector_cols_A_2):
  fig, ax = plt.subplots()
  q = ax.quiver(eigenvalues, eigenvalues, vector_cols_A_1, vector_cols_A_2)
- ax.quiverkey(q, X=0.3, Y=1.1, U=5, label='Quiver key, length = 10', labelpos='E')
+ ax.quiverkey(q, X=0.3, Y=1.1, U=5, label='Quiver key, length = 5', labelpos='E')
  plt.show()
  print(eigenvalues)
  print(standard_basis_vector)
